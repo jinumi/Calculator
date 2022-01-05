@@ -5,7 +5,7 @@ from tkinter import *
 
 window = Tk()
 window.geometry("295x375")
-window.resizable(0, 0)
+# window.resizable( 0, 0)
 window.overrideredirect(0)
 window.title("Calculator")
 # window.iconbitmap('C:/Users/umair/Downloads/circle_FeX_icon.ico')
