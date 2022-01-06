@@ -5,10 +5,19 @@ from tkinter import *
 
 window = Tk()
 window.geometry("295x375")
-# window.resizable( 0, 0)
-window.overrideredirect(0)
+# window.resizable( 0, 0) # Code to disable the Maximize Buttons from the window.
+# window.overrideredirect(1) # Code to remove the Maximize & Minimize Buttons from the window.
 window.title("Calculator")
+window.attributes('-alpha', 0.9) # Adds transparency to the whole application.
+# window.wm_attributes('-toolwindow', True)
 # window.iconbitmap('C:/Users/umair/Downloads/circle_FeX_icon.ico')
+# window.attributes('-toolwindow', True)
+# -alpha
+# -transparentcolor
+# -disabled
+# -fullscreen
+# -toolwindow
+# -topmost
 
 
 def btn_click(item):
