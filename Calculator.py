@@ -26,45 +26,41 @@ class Drag ( tkinter.Tk ) :
 
 window = Drag()
 
-window.geometry("300x400")
-window.eval( 'tk::PlaceWindow . center')
-window.overrideredirect(1) # Code to remove the Maximize & Minimize Buttons from the window.
+window.geometry("290x400")
+window.overrideredirect(1)
 window.title("Calculator")
-window.attributes('-alpha', 0.9) # Adds transparency to the whole application.
+window.attributes('-alpha', 0.9)
+window.eval( 'tk::PlaceWindow . center')
 
 def btn_click(item):
- 
     global expression
-    input_text.set(expression)
     expression = expression + str(item)
-    
-def btn_clear():
- 
-    global expression
-    expression = ""
+    input_text.set(expression)
+
+def btn_clear(): 
+    global expression 
+    expression = "" 
     input_text.set("")
- 
+
 def btn_equal():
- 
     global expression
     result = str(eval(expression))
     input_text.set(result)
     expression = ""
-
+ 
 close_btn  = Frame(window, width = 50, height = 50, bg = "#ededed")
-close_btn.pack()
-expression  = ""
-input_text  = StringVar()
-input_frame = Frame(window, width = 300, height = 100, bd = 0, highlightbackground = "#ededed", highlightcolor = "#ededed", highlightthickness = 1)
-input_frame.pack(side = TOP)
-input_field = Entry(input_frame, font = ('Cascadia Code', 30, 'normal'), textvariable = input_text, width = 50, bg = "#ededed", fg = "#737373", bd = 0, justify = RIGHT)
-input_field.grid(row = 1, column = 1 )
-input_field.pack(ipady = 10)
-btns_frame  = Frame(window, width = 400, height = 500, bg = "#ededed") 
+close_btn.pack(anchor = 'e')
+expression = ""
+input_text = StringVar()
+input_frame = Frame(window, width=300, height=100, bd=0, highlightbackground="#ededed", highlightcolor="#ededed", highlightthickness=1)
+input_frame.pack(side=TOP)
+input_field = Entry(input_frame, font=('Cascadia Code', 30, 'normal'), textvariable=input_text, width=40, fg = "#737373", bg="#ededed", bd=0, justify=RIGHT)
+input_field.grid(row=1, column=1)
+input_field.pack(ipady=10)
+btns_frame = Frame(window, width=400, height=500, bg="#ededed")
 btns_frame.pack()
 
-
-close        = Button(close_btn, text = "✕", anchor='e', justify = RIGHT, font = ('Cascadia Code', "10", 'bold'), fg = "#737373", width = 35, height = 1, bd = 0, bg = "#ededed", cursor = "hand2", command = window.destroy).grid(row = 0,   column = 0, padx = 1, pady = 1)
+close        = Button(close_btn, text = "✕", anchor='e', justify = RIGHT, font = ('Cascadia Code', "10", 'bold'), fg = "#737373", width = 2, height = 1, bd = 0, bg = "#ededed", cursor = "hand2", command = window.destroy).grid(row = 0,   column = 0, padx = 2, pady = 1)
 zero         = Button(btns_frame, text = "0", font = ('Cascadia Code', "20", 'normal'), fg = "#737373", width = 4, height = 1, bd = 0, bg = "#fcfcfc", cursor = "hand2", command = lambda: btn_click(0)).grid(row = 5,   column = 2, padx = 1, pady = 1)   # columnspan = 2,
 one          = Button(btns_frame, text = "1", font = ('Cascadia Code', "20", 'normal'), fg = "#737373", width = 4, height = 1, bd = 0, bg = "#fcfcfc", cursor = "hand2", command = lambda: btn_click(1)).grid(row = 4,   column = 1, padx = 1, pady = 1)
 two          = Button(btns_frame, text = "2", font = ('Cascadia Code', "20", 'normal'), fg = "#737373", width = 4, height = 1, bd = 0, bg = "#fcfcfc", cursor = "hand2", command = lambda: btn_click(2)).grid(row = 4,   column = 2, padx = 1, pady = 1)
@@ -81,9 +77,9 @@ left_bracket = Button(btns_frame, text = ")", font = ('Cascadia Code', "20", 'no
 divide       = Button(btns_frame, text = "÷", font = ('Cascadia Code', "20", 'normal'), fg = "#00cbf6", width = 4, height = 1, bd = 0, bg = "#f5f5f5", cursor = "hand2", command = lambda: btn_click("/")).grid(row = 1, column = 4, padx = 1, pady = 1)
 multiply     = Button(btns_frame, text = "x", font = ('Cascadia Code', "20", 'normal'), fg = "#00cbf6", width = 4, height = 1, bd = 0, bg = "#f5f5f5", cursor = "hand2", command = lambda: btn_click("*")).grid(row = 2, column = 4, padx = 1, pady = 1)
 minus        = Button(btns_frame, text = "-", font = ('Cascadia Code', "20", 'normal'), fg = "#00cbf6", width = 4, height = 1, bd = 0, bg = "#f5f5f5", cursor = "hand2", command = lambda: btn_click("-")).grid(row = 3, column = 4, padx = 1, pady = 1)
-plus         = Button(btns_frame, text = "+", font = ('Cascadia Code', "20", 'normal'), fg = "#00cbf6", width = 4, height = 1, bd = 0, bg = "#f5f5f5", cursor = "hand2", command = lambda: btn_click("+")).grid(row = 5, column = 4, padx = 1, pady = 1)
+plus         = Button(btns_frame, text = "+", font = ('Cascadia Code', "20", 'normal'), fg = "#00cbf6", width = 4, height = 1, bd = 0, bg = "#f5f5f5", cursor = "hand2", command = lambda: btn_click("+")).grid(row = 4, column = 4, padx = 1, pady = 1)
 percentage   = Button(btns_frame, text = "%", font = ('Cascadia Code', "20", 'normal'), fg = "#00cbf6", width = 4, height = 1, bd = 0, bg = "#f5f5f5", cursor = "hand2", command = lambda: btn_click("%")).grid(row = 5, column = 3, padx = 1, pady = 1)
 point        = Button(btns_frame, text = ".", font = ('Cascadia Code', "20", 'normal'), fg = "#00cbf6", width = 4, height = 1, bd = 0, bg = "#f5f5f5", cursor = "hand2", command = lambda: btn_click(".")).grid(row = 5, column = 1, padx = 1, pady = 1)
-equals       = Button(btns_frame, text = "=", font = ('Cascadia Code', "20", 'normal'), fg = "#ffffff", width = 4, height = 1, bd = 0, bg = "#00cbf6", cursor = "hand2", command = lambda: btn_equal()).grid(row = 4,    column = 4, padx = 1, pady = 1)
+equals       = Button(btns_frame, text = "=", font = ('Cascadia Code', "20", 'normal'), fg = "#ffffff", width = 4, height = 1, bd = 0, bg = "#00cbf6", cursor = "hand2", command = lambda: btn_equal()).grid(row = 5,    column = 4, padx = 1, pady = 1)
 
 window.mainloop()
