@@ -1,5 +1,5 @@
 # Designed and Developed by Muhammad Umair Yaqub.
-# P A K I S T A N
+# Made in P A K I S T A N
 
 import tkinter
 
